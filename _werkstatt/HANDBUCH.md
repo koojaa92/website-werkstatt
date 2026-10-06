@@ -539,7 +539,8 @@ Kommt nach dem Live-Gang. Eine gute Seite, die niemand findet, ist ein schönes 
 2. Claude öffnet jede Seite und hält fest: Schriften und Größenstufen, Abstände, Rhythmus der Abschnitte, Farbstimmung, Bildsprache, Bewegung.
 3. Daraus entsteht **eine** `_projekt/DESIGN.md`, passend zur Kundin, keine Kopie.
 4. Drei Hero-Varianten als Screenshot. Die Kundin wählt.
-5. Ab dann gilt `DESIGN.md`. Jede neue Seite wird dagegen geprüft.
+5. Ab dann ist `DESIGN.md` der Ausgangspunkt für jede neue Seite.
+6. **Das Stilbuch lebt.** Weicht die Kundin oder Jakob bewusst ab, gilt die Abweichung und wird in `DESIGN.md` nachgetragen. Claude dreht nichts zurück und fällt nicht in einen Standard- oder Skill-Look zurück. Der Skill hilft beim Anfang, die Menschen entscheiden.
 
 Grenze: Inspiration ja, Nachbau nein. Keine Logos, Texte, Bilder oder unverwechselbaren Layouts fremder Seiten.
 

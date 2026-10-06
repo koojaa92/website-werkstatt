@@ -35,7 +35,8 @@ Gilt für jede Sitzung in diesem Repo. Lies zu Beginn auch `_projekt/STAND.md`. 
 - `llms.txt` und `sitemap.xml` bei Änderungen an Angeboten, Preisen oder Seiten mitpflegen.
 
 ## Design
-- `_projekt/DESIGN.md` ist verbindlich, sobald freigegeben. Jede Änderung dagegen prüfen.
+- `_projekt/DESIGN.md` ist ein lebendiges Stilbuch, kein starres Regelwerk. Es ist der Ausgangspunkt, Abweichungen sind erwünscht.
+- Was Jakob oder die Kundin bewusst anders entscheiden, gilt. Nie zurückdrehen und nie in einen Standard- oder Skill-Look zurückfallen. Die Entscheidung sofort in `DESIGN.md` nachtragen, damit sie bleibt.
 - Vor jedem Bericht: Screenshots bei 390 und 1280 px, selbst prüfen.
 - Skill: `frontend-design`. Keine weiteren Skills ohne Rückfrage installieren.
 - Texte nie ungefragt ändern, auch wenn ein Skill das nahelegt.
