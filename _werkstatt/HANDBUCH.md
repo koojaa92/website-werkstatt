@@ -130,12 +130,13 @@ Phasen 0 bis 3 sind fertig, **bevor** der erste Entwurf entsteht. Das ist der wi
 **Phase 3: Grundlage festlegen**
 - Website-Typ, Ziel und Funktionen festlegen (Abschnitt 7).
 - Claude fasst zusammen: Seitenliste, Angebote mit Preis, Ort, Zeit, Anmeldung. Markenarchitektur (Dachmarke, Angebote, Schreibweisen). Wörter, die immer und nie vorkommen. Die eine Handlung, die Besucher tun sollen.
-- Referenzseiten auswerten: Was genau gefällt (Schrift, Bildsprache, Aufbau)?
-- `CLAUDE.md` mit den Marken-Regeln füllen, `_projekt/STAND.md` anlegen.
-- Tor: Kundin gibt die Grundlage frei.
+- Referenzseiten auswerten und daraus `_projekt/DESIGN.md` ableiten (Abschnitt 20).
+- Drei Varianten für den Anfang der Startseite (Hero) als Screenshot. Die Kundin wählt eine.
+- `CLAUDE.md` mit den Marken-Regeln füllen, `_projekt/STAND.md` pflegen.
+- Tor: Kundin gibt Grundlage und Hero-Variante frei.
 
 **Phase 4: Erster Entwurf und Live-Gang**
-- Das Gerüst füllen: Struktur nach Abschnitt 7, Texte aus dem Interview, Gestaltung.
+- Das Gerüst füllen: Struktur nach Abschnitt 7, Texte aus dem Interview, Gestaltung nach `DESIGN.md`.
 - Domain verbinden, sobald die Kundin mit dem Stand zufrieden ist (Abschnitt 16). Vorher reicht die github.io-Adresse.
 - Link an die Kundin: am eigenen Handy ansehen.
 
@@ -513,6 +514,8 @@ Kommt nach dem Live-Gang. Eine gute Seite, die niemand findet, ist ein schönes 
 - [ ] 404-Seite und Grundlagen der Barrierefreiheit im Gerüst (Alt-Texte, Kontraste, Tastaturbedienung).
 - [ ] Material-Eingang festlegen: wohin Kundinnen Fotos und Texte schicken.
 - [ ] Ablauf Collaborator + Claude-GitHub-App auf fremdem Repo beim ersten Transfer testen.
+- [ ] Impeccable an Jakobs eigener Website testen, dann entscheiden, ob es in die Vorlage kommt.
+- [ ] Claude Design gegen Google Stitch testen.
 
 ---
 
@@ -520,6 +523,57 @@ Kommt nach dem Live-Gang. Eine gute Seite, die niemand findet, ist ein schönes 
 
 - `CLAUDE.md`: Regeln und Arbeitsweise für Claude Code.
 - `_projekt/STAND.md`: Projektstand und offene Punkte.
-- `_projekt/GRUNDLAGE.md`: Ergebnis von Phase 3.
+- `_projekt/GRUNDLAGE.md`: Ergebnis von Phase 3 (wer, für wen, was, warum).
+- `_projekt/DESIGN.md`: das Stilbuch der Seite (Abschnitt 20).
+- `.claude/skills/frontend-design/`: Design-Skill von Anthropic.
+- `_werkstatt/KI-WERKZEUGKASTEN.md`: Hintergrundrecherche zu Skills und Werkzeugen.
+
+---
+
+## 20. Design-Werkzeuge und Referenz-System
+
+**Ziel:** Geschmack wird zu einer Datei, nicht zu zwanzig Feedbackrunden.
+
+**Referenzen → DESIGN.md**
+1. Die Kundin bringt zwei bis drei Seiten mit, die sie berühren, und sagt je einen Satz, *was* sie berührt.
+2. Claude öffnet jede Seite und hält fest: Schriften und Größenstufen, Abstände, Rhythmus der Abschnitte, Farbstimmung, Bildsprache, Bewegung.
+3. Daraus entsteht **eine** `_projekt/DESIGN.md`, passend zur Kundin, keine Kopie.
+4. Drei Hero-Varianten als Screenshot. Die Kundin wählt.
+5. Ab dann gilt `DESIGN.md`. Jede neue Seite wird dagegen geprüft.
+
+Grenze: Inspiration ja, Nachbau nein. Keine Logos, Texte, Bilder oder unverwechselbaren Layouts fremder Seiten.
+
+Prompt:
+```
+Hier sind Referenzseiten, die [Name] mag:
+1. [URL]: „[was sie daran berührt]“
+2. [URL]: „[…]“
+Öffne jede Seite und analysiere die Designsprache: Schriften und Größenstufen,
+Abstände, Rhythmus, Farben, Bildsprache, Bewegung. Kopiere nichts.
+Leite daraus eine eigene _projekt/DESIGN.md ab, passend zu _projekt/GRUNDLAGE.md.
+Nenne am Ende drei Dinge, die du bewusst NICHT übernommen hast, und warum.
+```
+
+**Skills**
+- In der Vorlage: nur `frontend-design` von Anthropic (eine Textdatei in `.claude/skills/`). Er hilft gegen den typischen KI-Look.
+- Weitere Skills nur nach Prüfung und nie mehrere Design-Skills gleichzeitig, sie widersprechen sich.
+- **Impeccable** (Designsystem, Kritik, Feinschliff): wird zuerst an Jakobs eigener Website getestet. Es lädt ein eigenes Programm nach und kann Hooks einrichten. Erst nach gutem Test in die Vorlage.
+- Skills sind Code von Fremden. Nur bekannte Quellen, vorher lesen lassen: „Lies diesen Skill und sag mir, ob er etwas Riskantes tut.“ Projektweise im Repo installieren, nie global.
+- In Cloud-Sitzungen funktionieren `/plugin` und `npx skills add` nicht zuverlässig. Skills kommen als Ordner nach `.claude/skills/` ins Repo. Danach eine neue Sitzung starten, dann sind sie aktiv.
+
+**Augen für Claude:** In Claude Code in der Cloud sind Playwright und Chromium schon da. Ein Playwright-MCP ist nicht nötig. Einfach verlangen: „Mach Screenshots bei 390 und 1280 px und prüfe sie gegen DESIGN.md, bevor du mir berichtest.“
+
+**Arbeitsweise**
+- Größere Schritte im Plan-Modus beginnen: Claude plant, ändert nichts. Erst wenn der Plan stimmt: „Mach.“
+- `CLAUDE.md` kurz halten. Ausführliches in eigene Dateien, in der `CLAUDE.md` nur darauf verweisen.
+- Neue Aufgabe, neuer Chat. Lange Chats werden schlechter. Entscheidungen stehen in `STAND.md`.
+
+**Bilder:** KI-Bilder nur für Texturen und Hintergründe, nie von Menschen oder echten Situationen. Die Kundinnen wollen echt gesehen werden.
+
+**Hosting:** GitHub Pages bleibt Standard. GitHub schließt nur Seiten aus, die vor allem auf Verkäufe ausgerichtet sind. Eine Infoseite mit Links zu Tickets oder Buchung ist in Ordnung. Hat eine Kundin einen eigenen Shop oder Bezahlung auf der Seite, wird das Hosting vorher neu entschieden.
+
+**Noch offen:** Impeccable testen; Claude Design gegen Google Stitch testen, um zu sehen, ob überhaupt ein weiteres Design-Werkzeug nötig ist.
+
+---
 
 *Die Seite ist lebendig und muss nicht perfekt sein. Sie lebt von den Angeboten.*

@@ -34,6 +34,14 @@ Gilt für jede Sitzung in diesem Repo. Lies zu Beginn auch `_projekt/STAND.md`. 
 - Termine (falls vorhanden) nur in `tools/termine.json`, danach `python3 tools/make-ics.py`.
 - `llms.txt` und `sitemap.xml` bei Änderungen an Angeboten, Preisen oder Seiten mitpflegen.
 
+## Design
+- `_projekt/DESIGN.md` ist verbindlich, sobald freigegeben. Jede Änderung dagegen prüfen.
+- Vor jedem Bericht: Screenshots bei 390 und 1280 px, selbst prüfen.
+- Skill: `frontend-design`. Keine weiteren Skills ohne Rückfrage installieren.
+- Texte nie ungefragt ändern, auch wenn ein Skill das nahelegt.
+- Keine KI-Bilder von Menschen.
+- Hintergrund zu Skills und Werkzeugen: `_werkstatt/HANDBUCH.md` Abschnitt 20.
+
 ## Datenschutz im Repo
 - Das Repo ist öffentlich. Keine Interview-Transkripte, privaten Notizen, Preise der Zusammenarbeit, Passwörter oder privaten Adressen ins Repo.
 - Ordner mit Unterstrich (`_projekt/`, `_werkstatt/`) werden nicht als Website ausgeliefert, sind auf GitHub aber sichtbar.
