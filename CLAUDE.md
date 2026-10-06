@@ -12,7 +12,7 @@ Gilt für jede Sitzung in diesem Repo. Lies zu Beginn auch `_projekt/STAND.md`. 
 ## Arbeitsweise
 - Sprache: Deutsch, Du-Form, sofern unten nicht anders festgelegt.
 - Drei Modi: „nur zeigen“ = Vorschau, nichts ändern. „Sag erst, was du machen würdest“ = Optionen mit Empfehlung, dann warten. „Mach“ = umsetzen, prüfen, live, kurz berichten.
-- Vor Phase 4 keinen Code schreiben. Erst Interview und freigegebene Grundlage (`_projekt/GRUNDLAGE.md`).
+- Vor Phase 4 kein Design und keine Inhalte. Erst Interview und freigegebene Grundlage (`_projekt/GRUNDLAGE.md`). Erlaubt ist ab Phase 1 nur das neutrale Gerüst (Handbuch Abschnitt 10).
 - Inhaltstexte nie ungefragt umschreiben, nur Vorschläge machen. Technik, Abstände und Struktur selbst verbessern.
 - Bei größeren Eingriffen (Layout-Umbau, Texte, SEO-Titel) erst Optionen nennen.
 - Bei Unklarem eine präzise Rückfrage statt drei Annahmen.
@@ -24,6 +24,9 @@ Gilt für jede Sitzung in diesem Repo. Lies zu Beginn auch `_projekt/STAND.md`. 
 - Bei Änderungen an `styles.css` oder `main.js` die Versionsnummer (`?v=...`) in allen HTML-Dateien hochzählen.
 - Jede Änderung bei 390 px und 1280 px per Screenshot prüfen.
 - Entwickeln auf eigenem Branch, live mit `git push origin <branch>:main`.
+- Links relativ, ohne führenden Schrägstrich (die Seite liegt bis zur Domain unter `/<repo>/`). Keine `.nojekyll`-Datei.
+- Bis zum Live-Gang `noindex` in allen HTML-Dateien und `Disallow: /` in `robots.txt`. Vor dem Live-Gang beides entfernen.
+- Originalbilder nie ins Repo, nur verkleinerte Web-Versionen.
 - Abstände zwischen Abschnitten eng halten. Globale Regel am Ende von `styles.css`.
 - Schriften selbst hosten oder über Bunny Fonts, nie direkt von Google Fonts.
 - Formulare nur, wenn sie wirklich senden. Sonst Mail-Link.

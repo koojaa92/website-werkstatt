@@ -98,7 +98,11 @@ GitHub ist der Speicher, GitHub Pages zeigt den Inhalt als Website, die Domain i
 
 **Was nie ins Repo gehört** (es ist öffentlich): Interview-Aufnahmen und Transkripte, persönliche Notizen, Preise der Zusammenarbeit, Rechnungen, Passwörter, private Adressen, die nicht ins Impressum gehören. Diese liegen bei Jakob (lokal oder in einem privaten Ordner). Ins Repo kommt nur das Destillat: Regeln in `CLAUDE.md`, Stand in `_projekt/STAND.md`.
 
-**Neues Repo anlegen:** Das macht Jakob auf GitHub mit „Use this template“ im Vorlagen-Repo `website-werkstatt`. Danach übernimmt Claude Code alles Weitere.
+**Neues Repo anlegen:** Das macht Jakob auf GitHub mit „Use this template“ im Vorlagen-Repo `website-werkstatt`. Claude Code kann kein Repo anlegen und keine Repo-Einstellungen ändern (Template-Häkchen, Pages, Transfer). Ist die Claude-Code-Sitzung in einem anderen Repo gestartet, muss das neue Repo ausdrücklich angebunden werden.
+
+**Die Kundin nicht vorschnell als Collaborator einladen.** Collaborators haben Schreibrechte auf `main`, also auf die öffentliche Seite. In der Bauphase braucht sie nur den Vorschau-Link.
+
+**Fremdes Google Doc:** Der Connector arbeitet mit Jakobs Rechten. Teilt die Kundin ihr Doc mit ihm, kann Claude es lesen, mit Bearbeiten-Recht auch schreiben. (Noch nicht getestet.)
 
 ---
 
@@ -116,6 +120,7 @@ Phasen 0 bis 3 sind fertig, **bevor** der erste Entwurf entsteht. Das ist der wi
 - Checkliste aus der Handreichung: Absicht, Referenzseiten, Angebote, Fotos, vorhandene Texte, Pflichtangaben, Kanäle.
 - Zugänge geprüft: Die Kundin kann sich bei Domain-Anbieter, alter Website, Mailpostfach und Google wirklich einloggen.
 - Tor: Material liegt vor. Fehlt viel, wird das Interview verschoben, nicht der Entwurf vorgezogen.
+- Parallel bei Jakob, ohne Design und Inhalt: Repo aus der Vorlage anlegen, CLAUDE.md „Projekt“ und `_projekt/STAND.md` füllen, das **neutrale Gerüst** bauen (Abschnitt 10), GitHub Pages aktivieren. Ergebnis: ein Vorschau-Link unter `<user>.github.io/<repo>`, der später nur noch gefüllt wird.
 
 **Phase 2: Interview**
 - Live, alternativ per Zoom. Mit Einwilligung aufnehmen, transkribieren lassen.
@@ -130,8 +135,8 @@ Phasen 0 bis 3 sind fertig, **bevor** der erste Entwurf entsteht. Das ist der wi
 - Tor: Kundin gibt die Grundlage frei.
 
 **Phase 4: Erster Entwurf und Live-Gang**
-- Statische Seite nach der Struktur in Abschnitt 7, Texte aus dem Interview.
-- GitHub Pages aktivieren, Domain verbinden.
+- Das Gerüst füllen: Struktur nach Abschnitt 7, Texte aus dem Interview, Gestaltung.
+- Domain verbinden, sobald die Kundin mit dem Stand zufrieden ist (Abschnitt 16). Vorher reicht die github.io-Adresse.
 - Link an die Kundin: am eigenen Handy ansehen.
 
 **Phase 5: Feedbackrunden (vereinbarte Anzahl)**
@@ -279,6 +284,20 @@ Erfahrungen, keine Regeln. Die Gestaltung folgt der Person: Ruhe, Tempo und Farb
 - `styles.css?v=...` und `main.js?v=...` in allen HTML-Dateien hochzählen.
 - Neue CSS-Regeln ans Ende, auf Spezifität achten.
 
+**Das neutrale Gerüst** (Phase 1, passt in jedes Projekt)
+- Drei Seiten: Start („Website im Aufbau“), Impressum, Datenschutz. `styles.css` mit Farb- und Schrift-Variablen als Platzhalter, `main.js` misst die Kopfzeilenhöhe.
+- Kein Design, keine Inhalte. Das Gerüst darf nichts vorwegnehmen.
+- `noindex` in jeder HTML-Datei und `Disallow: /` in `robots.txt`, damit Google keinen Entwurf erfasst. **Vor dem Live-Gang beides entfernen.**
+- Links relativ und ohne führenden Schrägstrich. Eine Projektseite liegt unter `/<repo>/`, absolute Pfade brechen dort.
+- Keine `.nojekyll`-Datei anlegen. Ohne sie liefert GitHub Pages Ordner mit Unterstrich (`_projekt`, `_werkstatt`) nicht aus. Das ist gewollt.
+- `sitemap.xml` zuerst mit der github.io-Adresse, nach Domain-Umzug oder Repo-Übertragung ersetzen.
+
+**GitHub Pages aktivieren** (kann nur der Repo-Besitzer)
+Settings → Pages → Source „Deploy from a branch“ → Branch `main`, Ordner `/ (root)` → Save. Direkt danach zeigt die Adresse noch „404“, der erste Bau dauert ein bis zwei Minuten. Eine Domain braucht man dafür nicht.
+
+**Bilder**
+- Originalbilder bleiben außerhalb des öffentlichen Repos (bei Jakob oder im Claude-Projekt). Ins Repo kommen nur ausgewählte, für das Web verkleinerte Versionen.
+
 **Handy und iOS Safari**
 - Vollbild-Abschnitte mit `lvh` und etwas Polster unten.
 - Kopfzeilenhöhe per JS messen, als `--kopf` setzen.
@@ -310,6 +329,10 @@ Ein guter Prompt sagt: **was**, **wo**, **wie es sein soll**, und **ob umgesetzt
 
 **Schwach:** „Mach die Startseite schöner.“
 **Stark:** „Startseite, Hero: Slogan eine Stufe kleiner, Abstand zum Button halbieren. Umsetzen, bei 390 und 1280 px prüfen, live stellen.“
+
+**Vor dem Absenden prüfen:** Steht noch ein Platzhalter wie `[hier einfügen]` im Prompt? Dann kommt der Inhalt nie an, und Claude arbeitet ohne ihn weiter. Ist bei Bettina passiert.
+
+**Chats teilen kein Gedächtnis.** Verschiedene Chats verbinden sich nur über Dateien: `CLAUDE.md` und `STAND.md` im Repo sowie das Google Doc. Was ein anderer Chat wissen soll, gehört in eine dieser Dateien.
 
 **Drei Modi klar benennen**
 - „**Nur zeigen**, nicht umsetzen“ → Vorschau als Screenshot.
@@ -483,7 +506,17 @@ Kommt nach dem Live-Gang. Eine gute Seite, die niemand findet, ist ein schönes 
 
 ---
 
-## 18. Vorlagen im Repo
+## 18. Noch offen in der Werkstatt
+
+- [ ] Das neutrale Gerüst aus dem Bettina-Repo in diese Vorlage übernehmen, damit jedes neue Projekt damit startet.
+- [ ] Ein wiederverwendbares Prüf-Skript für Screenshots bei 390 und 1280 px.
+- [ ] 404-Seite und Grundlagen der Barrierefreiheit im Gerüst (Alt-Texte, Kontraste, Tastaturbedienung).
+- [ ] Material-Eingang festlegen: wohin Kundinnen Fotos und Texte schicken.
+- [ ] Ablauf Collaborator + Claude-GitHub-App auf fremdem Repo beim ersten Transfer testen.
+
+---
+
+## 19. Vorlagen im Repo
 
 - `CLAUDE.md`: Regeln und Arbeitsweise für Claude Code.
 - `_projekt/STAND.md`: Projektstand und offene Punkte.
